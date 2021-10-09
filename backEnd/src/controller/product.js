@@ -12,7 +12,16 @@ exports.createProduct = (req, res) => {
     inspectionReport,
     carSpecifications,
     carFeatures,
-    createdBy,
+    // manufacturedYear,
+    // regYear,
+    // fuel,
+    // kmsDriven,
+    // engineDisplacement,
+    // noOfOwners,
+    // rto,
+    // transmission,
+    // insuranceType,
+    // createdBy,
   } = req.body;
 
   let carPictures = [];
@@ -33,7 +42,7 @@ exports.createProduct = (req, res) => {
     inspectionReport,
     carSpecifications,
     carFeatures,
-    createdBy: req.user._id,
+    // createdBy: req.user._id,
   });
 
   product.save((error, product) => {
