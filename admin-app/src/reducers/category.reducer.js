@@ -27,7 +27,7 @@ const buildNewCategories = (parentId, categories, category) => {
       myCategories.push({
         ...cat,
         children:
-          cat.children && cat.children.length > 0
+          cat.children.length > 0
             ? buildNewCategories(
                 parentId,
                 [
@@ -37,6 +37,7 @@ const buildNewCategories = (parentId, categories, category) => {
                     name: category.name,
                     slug: category.slug,
                     parentId: category.parentId,
+                    type: category.type,
                     children: category.children,
                   },
                 ],
@@ -47,10 +48,9 @@ const buildNewCategories = (parentId, categories, category) => {
     } else {
       myCategories.push({
         ...cat,
-        children:
-          cat.children && cat.children.length > 0
-            ? buildNewCategories(parentId, cat.children, category)
-            : [],
+        children: cat.children
+          ? buildNewCategories(parentId, cat.children, category)
+          : [],
       });
     }
   }
@@ -58,7 +58,7 @@ const buildNewCategories = (parentId, categories, category) => {
 };
 
 export default (state = initState, action) => {
-  console.log(action.type, action.payload);
+  // console.log(action.type, action.payload);
   switch (action.type) {
     case categoryConstants.GET_ALL_CATEGORIES_SUCCESS:
       state = {
@@ -72,11 +72,9 @@ export default (state = initState, action) => {
         ...state,
         loading: true,
       };
-      console.log("hhh");
       break;
 
     case categoryConstants.ADD_NEW_CATEGORY_SUCCESS:
-      console.log("zzz");
       const category = action.payload.category;
       console.log(category);
       const updatedCategories = buildNewCategories(
@@ -85,7 +83,6 @@ export default (state = initState, action) => {
         category
       );
       console.log("updated", updatedCategories);
-
       state = {
         ...state,
         categories: updatedCategories,
@@ -94,7 +91,6 @@ export default (state = initState, action) => {
       break;
 
     case categoryConstants.ADD_NEW_CATEGORY_FAILURE:
-      console.log("zzzyyyy");
       state = {
         ...initState,
         loading: false,

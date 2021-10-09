@@ -1,0 +1,26 @@
+.key {
+  font-size: 14px;
+  font-weight: bold;
+}
+.value {
+  font-size: 16px;
+}
+.sectionHeading {
+  font-size: 1.3rem;
+  font-weight: bolder;
+}
+.addSectionHeading {
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+.carImageContainer {
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+  text-align: center;
+}
+.carImageContainer img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}

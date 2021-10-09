@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Layout from "../../components/Layout";
 import { Container, Row, Col, Modal, Button, Form } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { addCategory, getAllCategory } from "../../actions";
+import { addCategory } from "../../actions";
 
 const Category = (props) => {
   const category = useSelector((state) => state.category);
@@ -13,32 +13,14 @@ const Category = (props) => {
 
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getAllCategory());
-  }, []);
-
   const handleClose = (e) => {
     const formData = new FormData();
     formData.append("name", categoryName);
     formData.append("parentId", parentCategoryId);
     formData.append("categoryImage", categoryImage);
-
-    // try {
-    //   const res = await axios.post("/category/create", formData, {
-    //     headers: {
-    //       "Content-Type": "multipart/form-data",
-    //     },
-    //   });
-    //   const { name, parentId, categoryImage } = res.data;
-    // } catch (err) {
-    //   if (err.response.status === 500) {
-    //     console.log("Prblm with server");
-    //   } else {
-    //     console.log("Pata nai");
-    //   }
-    // }
-
     dispatch(addCategory(formData));
+    setCategoryName("");
+    setParentCategoryId("");
 
     setShow(false);
   };
