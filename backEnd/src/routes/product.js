@@ -3,7 +3,12 @@ const {
   requireSignin,
   adminMiddleware,
 } = require("../common-middleware/index");
-const { createProduct } = require("../controller/product");
+const {
+  createProduct,
+  getProductsBySlug,
+  getProductDetailsById,
+  getAllProducts,
+} = require("../controller/product");
 const multer = require("multer");
 const router = express.Router();
 const path = require("path");
@@ -25,10 +30,13 @@ const upload = multer({ storage: storage });
 
 router.post(
   "/product/create",
-  requireSignin,
-  adminMiddleware,
+  // requireSignin,
+  // adminMiddleware,
   upload.array("carPictures"),
   createProduct
 );
+router.get(`/products/:slug`, getProductsBySlug);
+router.get(`/product/:productId`, getProductDetailsById);
+router.get(`/products`, getAllProducts);
 
 module.exports = router;
