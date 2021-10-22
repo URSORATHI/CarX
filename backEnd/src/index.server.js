@@ -11,6 +11,8 @@ const categoryRoutes = require("./routes/category");
 const productRoutes = require("./routes/product");
 const wishlistRoutes = require("./routes/wishlist");
 const initialDataRoutes = require("./routes/admin/initialData");
+const orderRoutes = require("./routes/order");
+const adminOrderRoute = require("./routes/admin/order.routes");
 
 const cors = require("cors");
 
@@ -37,6 +39,8 @@ app.use("/api", categoryRoutes);
 app.use("/api", productRoutes);
 app.use("/api", wishlistRoutes);
 app.use("/api", initialDataRoutes);
+app.use("/api", orderRoutes);
+app.use("/api", adminOrderRoute);
 
 app.listen(process.env.PORT, () => {
   console.log(`Server is running on port ${process.env.PORT}`);

@@ -11,6 +11,7 @@ const wishlistSchema = new mongoose.Schema(
           required: true,
         },
         price: { type: String, required: true },
+        fuel: { type: String, required: true },
       },
     ],
   },
