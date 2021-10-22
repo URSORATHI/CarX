@@ -198,7 +198,6 @@ const Products = (props) => {
       <Table responsive="sm">
         <thead>
           <tr>
-            <th>#</th>
             <th>Name</th>
             <th>Price</th>
             <th>Inspection Score</th>
@@ -212,7 +211,6 @@ const Products = (props) => {
                   onClick={() => showProductDetailsModal(product)}
                   key={product._id}
                 >
-                  <td>1</td>
                   <td>{product.name}</td>
                   <td>{product.price}</td>
                   <td>{product.inspectionScore}</td>

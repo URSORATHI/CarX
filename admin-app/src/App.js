@@ -10,6 +10,7 @@ import { isUserLoggedIn, getInitialData } from "./actions";
 import Products from "./containers/Products/products";
 import Orders from "./containers/Orders/orders";
 import Category from "./containers/Category/Category";
+import CarRequest from "./containers/carRequest/carRequest";
 
 function App() {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ function App() {
         <PrivateRoute path="/category" component={Category}></PrivateRoute>
         <PrivateRoute path="/products" component={Products}></PrivateRoute>
         <PrivateRoute path="/orders" component={Orders}></PrivateRoute>
+        <PrivateRoute path="/carrequest" component={CarRequest}></PrivateRoute>
         <Route path="/signin" component={Signin}></Route>
         <Route path="/signup" component={Signup}></Route>
       </Switch>
